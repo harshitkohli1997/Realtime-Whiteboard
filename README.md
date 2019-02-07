@@ -19,7 +19,7 @@ This is a lightweight NodeJS collaborative Whiteboard/Sketchboard with real time
 2. Clone the app
 3. Run `npm i` inside the folder
 4. Run `node server.js`
-5. Surf to http://localhost:8080
+5. Surf to http://localhost:3000
 
 ## API
 Call your site with GET parameters to change the WhiteboardID or the Username
