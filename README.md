@@ -1,5 +1,5 @@
 # whiteboard
-This is a lightweight NodeJS collaborative Whiteboard/Sketchboard witch can easily be customized...
+This is a lightweight NodeJS collaborative Whiteboard/Sketchboard with real time chat feature which can easily be customized...
 
 
 ## Some Features
@@ -26,13 +26,14 @@ Call your site with GET parameters to change the WhiteboardID or the Username
 
 `http://localhost:8080?room=MYID&name=MYNAME`
 
-* whiteboardid => All people with the same ID are drawing on the same board
-* username => The name witch is showing to others while drawing
+* room => All people with the same ID are drawing on the same board
+* name => The name witch is showing to others while drawing
 
 
 ## Things you may want to know
 * Whiteboards are gone if you restart the Server, so keep that in mind (or save your whiteboard)
 * This is just a sample layout to show the functions available
 * You shoud be able to customize without ever toutching the whiteboard.js (take a look at index.html & main.js)
+* I'm planning to add realtime audio broadcasting feature in this app
 
 
