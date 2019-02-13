@@ -1,4 +1,7 @@
 var socket = io();
+
+  
+
 //scroll fn
 function scrollToBottom() {
 //selectors
@@ -16,7 +19,10 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeig
 }
 }
 socket.on('connect', function () {
- var params = jQuery.deparam(window.location.search);
+ var params = {
+   name:"hk",
+   room:"abc"
+ }
 
  socket.emit('join',params,function(err){
    if (err){

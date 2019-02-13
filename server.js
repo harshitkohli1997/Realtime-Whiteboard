@@ -1,10 +1,11 @@
-var PORT = 3000; //Set port for the app
+const PORT = process.env.PORT || 8000//Set port for the app
 
 fs = require("fs-extra");
 var Serberries = require('serberries');
 var express = require('express');
 const path = require('path');
 const http = require('http');
+const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 // const bodyParser = require('body-parser');
 const {isRealString} = require('./server/utils/validation')
 const {Users} = require('./server/utils/users');
@@ -19,6 +20,8 @@ var users = new Users();
 server.listen(PORT);
 var io = require('socket.io')(server);
 var SocketIO = require('socket.io');
+
+
 
 var myserver = new Serberries({
     path:__dirname+'/logic'
@@ -110,12 +113,26 @@ function progressUploadFormData(formData) {
     });
 }
 
-// io = SocketIO({
-//     perMessageDeflate: false // Disable compression
-//   }).listen(myserver.server);
+
 
 var allUsers = {};
 io.on('connection', function (socket) {
+
+    RTCMultiConnectionServer.addSocket(socket);
+
+    // ----------------------
+    // below code is optional
+
+    const params = socket.handshake.query;
+
+    if (!params.socketCustomEvent) {
+        params.socketCustomEvent = 'custom-message';
+    }
+
+    socket.on(params.socketCustomEvent, function(message) {
+        socket.broadcast.emit(params.socketCustomEvent, message);
+    });
+
     socket.on('join', (params,callback) => {
         if(!isRealString(params.name) || !isRealString(params.room)){
          return callback('Name and room name are required ');
@@ -128,7 +145,7 @@ io.on('connection', function (socket) {
             console.log('working')
         });
     
-        // Broadcast the received buffer
+        //Broadcast the received buffer
         socket.on('stream', function(packet){
             socket.broadcast.emit('stream', packet);
         });
