@@ -1,6 +1,6 @@
 var whiteboardId = getQueryVariable("room");
-whiteboardId = whiteboardId || "open";
-var myUsername = getQueryVariable("name");
+whiteboardId = whiteboardId || "abc";
+var myUsername = getQueryVariable("name ");
 myUsername = myUsername || "unknown";
 
 var url = document.URL.substr(0, document.URL.lastIndexOf('/'));

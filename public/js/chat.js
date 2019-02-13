@@ -1,7 +1,4 @@
 var socket = io();
-
-  
-
 //scroll fn
 function scrollToBottom() {
 //selectors
