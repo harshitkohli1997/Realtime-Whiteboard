@@ -1,7 +1,7 @@
 var whiteboardId = getQueryVariable("room");
-whiteboardId = whiteboardId || "abc";
-var myUsername = getQueryVariable("name ");
-myUsername = myUsername || "hk";
+whiteboardId = whiteboardId || "open";
+var myUsername = getQueryVariable("name");
+myUsername = myUsername || "unknown";
 
 var url = document.URL.substr(0, document.URL.lastIndexOf('/'));
 var signaling_socket = null;

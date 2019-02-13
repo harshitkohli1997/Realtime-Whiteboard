@@ -19,15 +19,12 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeig
 }
 }
 socket.on('connect', function () {
- var params = {
-   name:"hk",
-   room:"abc"
- }
+ var params = jQuery.deparam(window.location.search)
 
  socket.emit('join',params,function(err){
    if (err){
-    // alert(err);
-    //  window.location.href = '/';
+    alert(err);
+     window.location.href = '/';
    } else {
     console.log('no error');
    }
